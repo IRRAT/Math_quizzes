@@ -13,13 +13,14 @@
   <link rel="stylesheet" href="bower_components/html5-boilerplate/css/main.css">
   <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
   <link rel="stylesheet" href="app.css">
-  <script src="bower_components/html5-boilerplate/js/vendor/modernizr-2.6.2.min.js"></script>
 </head>
 <body>
-  <ul class="menu">
-    <li><a href="#/view1">view1</a></li>
-    <li><a href="#/view2">view2</a></li>
-  </ul>
+  <div class="container" ng-controller="nav">
+    <ul class="nav nav-tabs">
+      <li ng-class="{active:tab =='/check'}" ng-click="tab = '/check'"><a href="#/check">Проверка</a></li>
+      <li ng-class="{active:tab =='/settings'}" ng-click="tab = '/settings'"><a href="#/settings">Установки</a></li>
+    </ul>
+  </div>
 
   <!--[if lt IE 7]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
@@ -27,18 +28,19 @@
 
   <div ng-view></div>
 
-  <div>Angular seed app: v<span app-version></span></div>
-
   <!-- In production use:
   <script src="//ajax.googleapis.com/ajax/libs/angularjs/x.x.x/angular.min.js"></script>
   -->
+  <script src="bower_components/html5-boilerplate/js/vendor/modernizr-2.6.2.min.js"></script>
+<!--   // <script src="bower_components/jquery/dist/jquery.min.js"></script>
+  // <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script> -->
   <script src="bower_components/angular/angular.js"></script>
   <script src="bower_components/angular-route/angular-route.js"></script>
   <script src="app.js"></script>
-  <script src="view1/view1.js"></script>
-  <script src="view2/view2.js"></script>
-  <script src="components/version/version.js"></script>
-  <script src="components/version/version-directive.js"></script>
-  <script src="components/version/interpolate-filter.js"></script>
+  <script src="check_modul/check.js"></script>
+  <script src="settings_modul/settings.js"></script>
+<!--   // <script src="components/version/version.js"></script>
+  // <script src="components/version/version-directive.js"></script>
+  // <script src="components/version/interpolate-filter.js"></script> -->
 </body>
 </html>

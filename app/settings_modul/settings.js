@@ -27,7 +27,16 @@ angular.module('myApp.settings', ['ngRoute'])
 			];
 }])
 .factory('QuizIndexes', [function(){
-	return {array: []};
+	return {array: [], 
+			findIndex: function(array, value) { // for IE 8  if indexOf not supported
+							if (array.indexOf) {
+								return array.indexOf(value);
+							}
+							for(var i=0; i<array.length; i++) {
+								if (array[i] === value) return i;
+							}
+						}
+			}
 }])
 .controller('SettingsCtrl', ["$scope", "Tags", "Quizzes", "QuizIndexes", function($scope, Tags, Quizzes, QuizIndexes) {
 	$scope.tab = "settings";
@@ -52,7 +61,7 @@ angular.module('myApp.settings', ['ngRoute'])
 		angular.forEach(tags, function(tag) {
 			angular.forEach(quizzes, function(quiz) {
 				if(quiz.tag == tag && quiz.checked == false) {
-					this.push(findIndex(quizzes, quiz));
+					this.push(QuizIndexes.findIndex(quizzes, quiz));
 				}
 			}, arr);
 		});
@@ -68,16 +77,5 @@ angular.module('myApp.settings', ['ngRoute'])
 		}, arr);
 		return arr;
 	};
-
-// for IE 8  if indexOf not supported
-	function findIndex(array, value) {
-		if (array.indexOf) {
-			return array.indexOf(value);
-		}
-
-		for(var i=0; i<array.length; i++) {
-			if (array[i] === value) return i;
-		}
-	}
 
 }]);

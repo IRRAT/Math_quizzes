@@ -33,7 +33,7 @@ angular.module('myApp.check', ['ngRoute'])
 	}
 
 	$scope.isBegin = function() {
-		if($scope.quizIndexes.array.length == 0 && $scope.userResult.correct == 0 && $scope.userResult.wrong == 0) {
+		if(!$scope.quizIndexes.array.length && !$scope.userResult.correct&& !$scope.userResult.wrong) {
 			return true;
 		}
 	}
@@ -53,7 +53,7 @@ angular.module('myApp.check', ['ngRoute'])
 	}
 
 	function deleteIndex(arr, index) {
-		arr.splice(findIndex(arr, index), 1);
+		arr.splice(QuizIndexes.findIndex(arr, index), 1);
 	}
 
 	function generateQuiz() {
@@ -64,16 +64,5 @@ angular.module('myApp.check', ['ngRoute'])
 	function getRandomInt(min, max) {
 		return Math.floor(Math.random() * (max - min + 1)) + min;
 	};
-
-	// for IE 8  if indexOf not supported
-	function findIndex(array, value) {
-		if (array.indexOf) {
-			return array.indexOf(value);
-		}
-
-		for(var i=0; i<array.length; i++) {
-			if (array[i] === value) return i;
-		}
-	}
 
 }]);

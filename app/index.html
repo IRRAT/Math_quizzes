@@ -15,10 +15,10 @@
   <link rel="stylesheet" href="app.css">
 </head>
 <body>
-  <div class="container" ng-controller="nav">
+  <div class="container" ng-controller="NavCtrl">
     <ul class="nav nav-tabs">
-      <li ng-class="{active:tab =='/check'}" ng-click="tab = '/check'"><a href="#/check">Проверка</a></li>
-      <li ng-class="{active:tab =='/settings'}" ng-click="tab = '/settings'"><a href="#/settings">Установки</a></li>
+      <li ng-class="{active: isActive('/check')}"><a href="#/check">Проверка</a></li>
+      <li ng-class="{active: isActive('/settings')}"><a href="#/settings">Установки</a></li>
     </ul>
   </div>
 

@@ -9,6 +9,8 @@ angular.module('myApp', [
 config(['$routeProvider', function($routeProvider) {
   $routeProvider.otherwise({redirectTo: '/check'});
 }]).
-controller('nav', ['$scope','$location', function($scope, $location){
-	$scope.tab = $location.url();
+controller('NavCtrl', ['$scope','$location', function($scope, $location){
+	$scope.isActive = function (viewLocation) { 
+		return viewLocation === $location.path();
+	};
 }]);
